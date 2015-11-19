@@ -14,7 +14,7 @@ describe HangpersonGame do
       @hangpersonGame = HangpersonGame.new('glorp')
       expect(@hangpersonGame).to be_an_instance_of(HangpersonGame)
       expect(@hangpersonGame.word).to eq('glorp')
-      expect(@hangpersonGame.guesses).to eq('')
+      expect(@hangpersonGame.correct_guesses).to eq('')
       expect(@hangpersonGame.wrong_guesses).to eq('')
     end
   end
@@ -26,7 +26,7 @@ describe HangpersonGame do
         @valid = @game.guess('a')
       end
       it 'changes correct guess list' do
-        expect(@game.guesses).to eq('a')
+        expect(@game.correct_guesses).to eq('a')
         expect(@game.wrong_guesses).to eq('')
       end
       it 'returns true' do
@@ -39,7 +39,7 @@ describe HangpersonGame do
         @valid = @game.guess('z')
       end
       it 'changes wrong guess list' do
-        expect(@game.guesses).to eq('')
+        expect(@game.correct_guesses).to eq('')
         expect(@game.wrong_guesses).to eq('z')
       end
       it 'returns true' do
@@ -53,7 +53,7 @@ describe HangpersonGame do
       end
       it 'does not change correct guess list' do
         @game.guess('a')
-        expect(@game.guesses).to eq('a')
+        expect(@game.correct_guesses).to eq('a')
       end
       it 'does not change wrong guess list' do
         @game.guess('q')
@@ -66,7 +66,7 @@ describe HangpersonGame do
       it 'is case insensitive' do
         expect(@game.guess('A')).to be false
         expect(@game.guess('Q')).to be false
-        expect(@game.guesses).not_to include('A')
+        expect(@game.correct_guesses).not_to include('A')
         expect(@game.wrong_guesses).not_to include('Q')
       end
     end
